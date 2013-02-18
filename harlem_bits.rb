@@ -1,9 +1,5 @@
 #!/usr/bin/env ruby
 
-require 'pp'
-require 'colored'
-COLORS = Colored.methods - [:extra, :colors, :colorize, :color] - Object.methods
-
 class Bit
   def initialize(color, on = false)
     @color, @on = color, on
@@ -24,11 +20,18 @@ class Bit
 end
 
 module CliRendering
+  require 'colored'
+  COLORS = Colored.methods - [:extra, :colors, :colorize, :color] - Object.methods
+  
   def draw
     puts with_enough_breaks_to_page_down
   end
   
   private
+  
+  def rand_color
+    COLORS[rand(COLORS.size-1)]
+  end
   
   def with_enough_breaks_to_page_down
     "#{"\n" * 50}#{with_space_below}"
@@ -54,7 +57,7 @@ class Arena
     @width, @height, @arena = width.to_i, height.to_i, []
     @height.times do |h|
       @arena << (0..@width).map do |i| 
-        Bit.new COLORS[rand(COLORS.size-1)]
+        Bit.new rand_color
       end
     end
   end

@@ -1,7 +1,7 @@
 BinaryHarlemShake
 =================
 
-Because anything can be done in binary.
+This is a thing now, right? Right guys?
 
 For the uninitiated:
 http://www.reddit.com/r/harlemshake
