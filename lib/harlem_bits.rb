@@ -13,11 +13,11 @@ module HarlemBits
     t = Thread.new { system "afplay #{AUDIO_FILE}" }
     s = new width || 50, height || 25
     s.start
-  rescue Interrupt
-    s.kill
-    t.kill
-  ensure
-    puts 'fin'
-    exit 0
+  # rescue Interrupt
+  #   s.kill
+  #   t.kill
+  # ensure
+  #   puts 'fin'
+  #   exit 0
   end
 end

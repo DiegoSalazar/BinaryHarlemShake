@@ -4,7 +4,7 @@ module HarlemBits
     COLORS = Colored.methods - [:extra, :colors, :colorize, :color] - Object.methods
   
     def draw
-      puts with_enough_breaks_to_page_down
+      STDOUT.puts with_enough_breaks_to_page_down
     end
   
     private
