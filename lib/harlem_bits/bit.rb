@@ -13,7 +13,7 @@ module HarlemBits
     end
   
     def to_s
-      @on ? '1'.send(@color) : '0'
+      @on ? ('1'.send(@color) rescue '1') : '0'
     end
     alias_method :inspect, :to_s
   end
