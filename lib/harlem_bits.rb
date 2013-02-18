@@ -11,7 +11,7 @@ module HarlemBits
 
   def self.shake(width, height)
     t = Thread.new { system "afplay #{AUDIO_FILE}" }
-    s = new width || 50, height || 25
+    s = Harlem.new width || 50, height || 25
     s.start
   # rescue Interrupt
   #   s.kill
