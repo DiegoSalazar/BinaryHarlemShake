@@ -1,6 +1,6 @@
 require 'pp'
 require 'colored'
-COLORS = Colored.methods - [:black, :extra, :colors, :colorize, :color] - Object.methods
+COLORS = Colored.methods - [:extra, :colors, :colorize, :color] - Object.methods
 
 class Bit
   def initialize(color, state = false)
@@ -49,7 +49,7 @@ class Arena
     found = []
     @arena.each do |row|
       row.each do |bit|
-        found << bit if rand(@width) > @width/2
+        found << bit if rand(@width) < @width/3
       end
     end
     found
@@ -97,9 +97,7 @@ class Harlem
     t.kill
     s.kill
   ensure
-    # Process.kill `ps -ef | grep HarlemShake | awk '{ print $2 }'`.split("\n").last
     puts 'fin'
-    exit 0
   end
   
   def initialize(width, height)
@@ -122,7 +120,7 @@ class Harlem
       delta = cur_t - start_t
       
       @arena.clear      
-      @arena.center.switch if (delta % 2.0) / 2 > 0.3
+      @arena.center.switch if (delta % 2.0) / 2 > 0.5
       @arena.random! if delta >= (DURATION/2)+1
       @arena.draw
       
