@@ -1,6 +1,8 @@
 BinaryHarlemShake
 =================
 
+![Have you seen this harlem shake thing?](http://i.imgur.com/5CKyDK3.png)
+
 This is a thing now, right? Right guys?
 
 For the uninitiated:
