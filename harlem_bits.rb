@@ -56,7 +56,7 @@ class Arena
   def initialize(width, height)
     @width, @height, @arena = width.to_i, height.to_i, []
     @height.times do |h|
-      @arena << (0..@width).map do |i| 
+      @arena << (1..@width).map do |i| 
         Bit.new rand_color
       end
     end
@@ -92,13 +92,14 @@ class Harlem
   
   def self.shake(width, height)
     t = Thread.new { system "afplay #{AUDIO_FILE}" }
-    s = new width || 30, height || 15
+    s = new width || 50, height || 25
     s.start
   rescue Interrupt
-    t.kill
     s.kill
+    t.kill
   ensure
     puts 'fin'
+    exit 0
   end
   
   def initialize(width, height)
