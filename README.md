@@ -9,7 +9,10 @@ http://www.reddit.com/r/harlemshake
 To Run:
 =======
 ```bash
-ruby < <(curl -s https://raw.github.com/DiegoSalazar/BinaryHarlemShake/master/harlem_bits.rb)
+# download first, you need to mp3 file.
+git clone git@github.com:DiegoSalazar/BinaryHarlemShake.git
+cd BinaryHarlemShake
+ruby harlem_bits.rb
 ```
 
 Todo:
