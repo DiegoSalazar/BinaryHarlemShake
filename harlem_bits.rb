@@ -11,6 +11,10 @@ class Bit
     @state = !@state 
   end
   
+  def off
+    @state = false
+  end
+  
   def to_s
     @state ? '1'.send(@color) : '0'
   end
@@ -33,6 +37,10 @@ class Arena
     @arena[@height/2][@width/2]
   end
   
+  def clear
+    @arena.each { |row| row.each { |bit| bit.off } }
+  end
+  
   def random!
     random.map { |bit| bit.switch }
   end
@@ -41,7 +49,7 @@ class Arena
     found = []
     @arena.each do |row|
       row.each do |bit|
-        found << bit if [2,4,6,8].include? rand(@width)
+        found << bit if rand(@width) > @width/2
       end
     end
     found
@@ -91,6 +99,7 @@ class Harlem
   ensure
     # Process.kill `ps -ef | grep HarlemShake | awk '{ print $2 }'`.split("\n").last
     puts 'fin'
+    exit 0
   end
   
   def initialize(width, height)
@@ -103,19 +112,17 @@ class Harlem
   end
   
   def start
-    start_t = Time.now.to_i
+    start_t = Time.now.to_f
     last_t = Time.now.to_i
     frame = 0
     switched = false
     
     while @alive
-      cur_t = Time.now.to_i
+      cur_t = Time.now.to_f
       delta = cur_t - start_t
       
-      if delta % 2 == 0 || cur_t != last_t
-        last_t = cur_t
-        @arena.center.switch
-      end
+      @arena.clear      
+      @arena.center.switch if (delta % 2.0) / 2 > 0.3
       @arena.random! if delta >= (DURATION/2)+1
       @arena.draw
       
