@@ -10,7 +10,14 @@ module HarlemBits
   AUDIO_FILE = 'resources/HarlemShake.mp3'
 
   def self.shake(width, height)
-    t = Thread.new { system "afplay #{AUDIO_FILE}" }
+    if OS.osx?
+      t = Thread.new { system "afplay #{AUDIO_FILE}" }
+    elsif OS.linux?
+      t = Thread.new { system "mpg123 #{AUDIO_FILE}" }
+    else
+      # Playing songs from windows command line? Can it be done? Has science gone too far?
+      t = Thread.new { puts "Pretend that there's music, pal." }
+    end
     s = Harlem.new width || 50, height || 25
     s.start
   rescue Interrupt
