@@ -1,3 +1,5 @@
+#!/usr/bin/env ruby
+
 require 'pp'
 require 'colored'
 COLORS = Colored.methods - [:extra, :colors, :colorize, :color] - Object.methods
