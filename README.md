@@ -11,10 +11,13 @@ http://www.reddit.com/r/harlemshake
 To Run:
 =======
 ```bash
-# download first, you need the mp3 file.
-git clone git@github.com:DiegoSalazar/BinaryHarlemShake.git
-cd BinaryHarlemShake
-ruby harlem_bits.rb
+sudo gem install harlem_bits
+harlem_bits
+```
+
+You can specify width and height:
+```bash
+harlem_bits 50 25
 ```
 
 Dependencies:
