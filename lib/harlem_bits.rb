@@ -1,3 +1,4 @@
+require 'os'
 require 'harlem_bits/bit'
 require 'harlem_bits/cli_rendering'
 require 'harlem_bits/arena'
