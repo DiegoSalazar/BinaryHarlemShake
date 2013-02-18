@@ -3,34 +3,58 @@ require 'colored'
 COLORS = Colored.methods - [:extra, :colors, :colorize, :color] - Object.methods
 
 class Bit
-  def initialize(color, state = false)
-    @color, @state = color, state
+  def initialize(color, on = false)
+    @color, @on = color, on
   end
   
   def switch
-    @state = !@state 
+    @on = !@on 
   end
   
   def off
-    @state = false
+    @on = false
   end
   
   def to_s
-    @state ? '1'.send(@color) : '0'
+    @on ? '1'.send(@color) : '0'
   end
   alias_method :inspect, :to_s
 end
 
+module CliRendering
+  def draw
+    puts with_enough_breaks_to_page_down
+  end
+  
+  private
+  
+  def with_enough_breaks_to_page_down
+    "#{"\n" * 50}#{with_space_below}"
+  end
+  
+  def with_space_below
+    "#{rows_with_newlines}#{"\n" * 5}"
+  end
+  
+  def rows_with_newlines
+    @arena.map { |row| with_leading_space row }.join("\n")
+  end
+  
+  def with_leading_space(row)
+    "#{' '*10}#{row.join(' ')}"
+  end
+end
+
 class Arena
+  include CliRendering
+  
   def initialize(width, height)
     @width, @height, @arena = width.to_i, height.to_i, []
     @height.times do |h|
-      @arena << (0..@width).map { |i| Bit.new COLORS[rand(COLORS.size-1)] }
+      @arena << (0..@width).map do |i| 
+        Bit.new COLORS[rand(COLORS.size-1)]
+      end
     end
-  end
-  
-  def draw
-    CliRenderer.new(@arena).draw
   end
   
   def center
@@ -53,34 +77,6 @@ class Arena
       end
     end
     found
-  end
-end
-
-class CliRenderer
-  def initialize(arena)
-    @arena = arena
-  end
-  
-  def draw
-    puts with_enough_breaks_to_page_down
-  end
-  
-  private
-  
-  def with_enough_breaks_to_page_down
-    "#{"\n" * 50}#{with_space_below}"
-  end
-  
-  def with_space_below
-    "#{rows_with_newlines}#{"\n" * 5}"
-  end
-  
-  def rows_with_newlines
-    @arena.map { |row| with_leading_space row }.join("\n")
-  end
-  
-  def with_leading_space(row)
-    "#{' '*10}#{row.join(' ')}"
   end
 end
 
@@ -120,7 +116,7 @@ class Harlem
       delta = cur_t - start_t
       
       @arena.clear      
-      @arena.center.switch if (delta % 2.0) / 2 > 0.5
+      @arena.center.switch if (delta % 2.0) / 2.0 > 0.4
       @arena.random! if delta >= (DURATION/2)+1
       @arena.draw
       
