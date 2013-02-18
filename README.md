@@ -9,7 +9,7 @@ http://www.reddit.com/r/harlemshake
 To Run:
 =======
 ```bash
-# download first, you need to mp3 file.
+# download first, you need the mp3 file.
 git clone git@github.com:DiegoSalazar/BinaryHarlemShake.git
 cd BinaryHarlemShake
 ruby harlem_bits.rb
