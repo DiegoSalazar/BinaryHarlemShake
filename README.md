@@ -6,8 +6,13 @@ Because anything can be done in binary.
 For the uninitiated:
 http://www.reddit.com/r/harlemshake
 
-To run:
-
+To Run:
+=======
+```bash
+git clone git@github.com:DiegoSalazar/BinaryHarlemShake.git
+cd BinaryHarlemShake
+ruby harlem_bits.rb <width> <height>
+```
 
 Todo:
 =====
