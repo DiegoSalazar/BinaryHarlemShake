@@ -13,6 +13,7 @@ To Run:
 ```bash
 # download first, you need the mp3 file.
 git clone git@github.com:DiegoSalazar/BinaryHarlemShake.git
+gem install colored
 cd BinaryHarlemShake
 ruby harlem_bits.rb
 ```
