@@ -15,9 +15,13 @@ cd BinaryHarlemShake
 ruby harlem_bits.rb
 ```
 
-Todo:
-=====
+Dependencies:
+============
+* The "colored" gem for colored terminal output.
+* afplay (Mac only).
 
+Todos:
+=====
 * Figure out how to work with frame rates and timings to make bits dance nicer.
 * Figure out how to render to the terminal more efficiently. Currently just outputting screen after screen creating a huge scroll history, ncurses maybe?
 * Control-C doesn't exit cleanly, currently must press twice.

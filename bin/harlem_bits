@@ -1,0 +1,4 @@
+#!/usr/bin/env ruby
+
+require 'harlem_bits'
+HarlemBits.shake ARGV[0], ARGV[1]
