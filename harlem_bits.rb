@@ -121,8 +121,8 @@ class Harlem
       delta = cur_t - start_t
       
       @arena.clear      
-      @arena.center.switch if (delta % 2.0) / 2.0 > 0.4
-      @arena.random! if delta >= (DURATION/2)+1
+      @arena.center.switch if delta % 2.0 == 0 || (delta % 2.0) / 2.0 > 0.3
+      @arena.random! if delta >= (DURATION / 2) + 1
       @arena.draw
       
       break if delta > DURATION
