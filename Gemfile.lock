@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    harlem_bits (0.0.1)
+    harlem_bits (0.0.2)
       colored
 
 GEM
