@@ -1,3 +1,4 @@
 .DS_Store
 harlem_bits-*.gem
 Gemfile.lock
+pkg/
