@@ -24,6 +24,7 @@ Dependencies:
 ============
 * The "colored" gem for colored terminal output.
 * afplay (Mac only).
+* mpg123 (Linux only, thanks Arkaniad!).
 
 Todos:
 =====
