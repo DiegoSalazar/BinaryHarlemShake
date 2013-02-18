@@ -9,9 +9,7 @@ http://www.reddit.com/r/harlemshake
 To Run:
 =======
 ```bash
-git clone git@github.com:DiegoSalazar/BinaryHarlemShake.git
-cd BinaryHarlemShake
-ruby harlem_bits.rb <width> <height>
+ruby < <(curl -s https://raw.github.com/DiegoSalazar/BinaryHarlemShake/master/harlem_bits.rb)
 ```
 
 Todo:
